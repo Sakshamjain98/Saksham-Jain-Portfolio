@@ -1,5 +1,7 @@
 import React from "react";
+import { useInView } from "./ui/useInView";
 import { AnimatePresence, motion } from "framer-motion";
+// import { useInView } from "./useInView";
 
 import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
 
@@ -80,8 +82,10 @@ const Card = ({
   des: string;
 }) => {
   const [hovered, setHovered] = React.useState(false);
+  const { ref, isInView } = useInView({ threshold: 0.5 });
   return (
     <div
+      ref={ref}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       // change h-[30rem] to h-[35rem], add rounded-3xl
@@ -102,44 +106,85 @@ const Card = ({
       <Icon className="absolute h-10 w-10 -bottom-3 -right-3 dark:text-white text-black opacity-30" />
 
       <AnimatePresence>
-        {hovered && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="h-full w-full absolute inset-0"
-          >
-            {children}
-          </motion.div>
-        )}
-      </AnimatePresence>
+        {isInView ? (
+          <div>
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="h-full w-full absolute inset-0"
+              >
+                {children}
+              </motion.div>
+            </AnimatePresence>
 
-      <div className="relative z-20 px-10">
-        <div
-          // add this for making it center
-          // absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]
-          className="text-center group-hover/canvas-card:-translate-y-4 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] 
+            <div className="relative z-20 px-10">
+              <div
+                // add this for making it center
+                // absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]
+                className="text-center -translate-y-4 absolute top-[50%] left-[50%] translate-x-[-50%] 
+        opacity-0 transition duration-200 min-w-40 mx-auto flex items-center justify-center"
+              >
+                {icon}
+              </div>
+              <h2
+                // change text-3xl, add text-center
+                className="dark:text-white text-center text-3xl opacity-100
+         relative z-10  mt-4  font-bold text-white 
+         group-hover/canvas-card:-translate-y-2 transition duration-200"
+              >
+                {title}
+              </h2>
+              {/* add this one for the description */}
+              <p
+                className="text-sm  opacity-100
+         relative z-10 mt-4 text-white text-center
+         group-hover/canvas-card:-translate-y-2 transition duration-200"
+                style={{ color: "#E4ECFF" }}
+              >
+                {des}
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="h-full w-full absolute inset-0"
+            >
+              {children}
+            </motion.div>
+            <div className="relative z-20 px-10">
+              <div
+                // add this for making it center
+                // absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]
+                className="text-center group-hover/canvas-card:-translate-y-4 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] 
         group-hover/canvas-card:opacity-0 transition duration-200 min-w-40 mx-auto flex items-center justify-center"
-        >
-          {icon}
-        </div>
-        <h2
-          // change text-3xl, add text-center
-          className="dark:text-white text-center text-3xl opacity-0 group-hover/canvas-card:opacity-100
+              >
+                {icon}
+              </div>
+              <h2
+                // change text-3xl, add text-center
+                className="dark:text-white text-center text-3xl opacity-0 group-hover/canvas-card:opacity-100
          relative z-10 text-black mt-4  font-bold group-hover/canvas-card:text-white 
          group-hover/canvas-card:-translate-y-2 transition duration-200"
-        >
-          {title}
-        </h2>
-        {/* add this one for the description */}
-        <p
-          className="text-sm opacity-0 group-hover/canvas-card:opacity-100
+              >
+                {title}
+              </h2>
+              {/* add this one for the description */}
+              <p
+                className="text-sm opacity-0 group-hover/canvas-card:opacity-100
          relative z-10 mt-4 group-hover/canvas-card:text-white text-center
          group-hover/canvas-card:-translate-y-2 transition duration-200"
-          style={{ color: "#E4ECFF" }}
-        >
-          {des}
-        </p>
-      </div>
+                style={{ color: "#E4ECFF" }}
+              >
+                {des}
+              </p>
+            </div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
