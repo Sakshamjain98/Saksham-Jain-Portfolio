@@ -35,7 +35,7 @@ const Approach = () => {
           every step of the way."
         >
           <CanvasRevealEffect
-            animationSpeed={3}
+            animationSpeed={5.1}
             // change bg-black to bg-pink-900
             containerClassName="bg-pink-900 rounded-3xl overflow-hidden"
             colors={[
@@ -57,7 +57,7 @@ const Approach = () => {
           from the ground up."
         >
           <CanvasRevealEffect
-            animationSpeed={3}
+            animationSpeed={5.1}
             containerClassName="bg-sky-600 rounded-3xl overflow-hidden"
             colors={[[125, 211, 252]]}
           />
