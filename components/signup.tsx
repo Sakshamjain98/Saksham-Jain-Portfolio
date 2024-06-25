@@ -31,7 +31,7 @@ export default function SignupFormDemo() {
 
       <form
         className="my-8"
-        action="https://formsubmit.co/0997a5353487f0b8666afb1abd30e4a6"
+        action="https://formspree.io/f/xblrrpqw"
         method="POST"
       >
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
