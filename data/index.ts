@@ -80,11 +80,11 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Yoom - Video Conferencing App",
-    des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "coming soon...",
+    title: "Uddeshhya KIET",
+    des: "Managing and maintaining the official website of Uddeshhya, an NGO dedicated to social change and youth empowerment.",
+    img: "https://res.cloudinary.com/djc8hwlgb/image/upload/v1742058044/P3_tovxvz.jpg",
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/c.svg"],
+    link: "https://uddeshhya.in/",
   },
   {
     id: 3,
@@ -96,44 +96,32 @@ export const projects = [
   },
   {
     id: 4,
-    title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.svg",
+    title: "Bodh Website",
+    des: "Developed Bodh, a project at MakeWithUs, enhancing learning through innovative technology.",
+    img: "https://res.cloudinary.com/djc8hwlgb/image/upload/v1742058142/p4_deudkn.jpg",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "coming soon...",
+    link: "https://bodh1oh1.com/",
   },
 ];
 
 export const testimonials = [
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Collaborating with Saksham was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Saksham's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Saksham is the ideal partner.",
+    name: "Gaurav Payal",
+    title: "President - Uddeshyya KIET",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Working with Saksham on the Bodh project has been an exceptional experience. His expertise in backend development ensured a smooth, scalable, and efficient system. He tackled complex challenges with ease, delivering high-quality solutions on time. His proactive approach and problem-solving skills made a significant impact on the project's success. Looking forward to collaborating again!",
+    name: "Sudardhan",
+    title: "Founder - MakeWithUs",
   },
   {
     quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
+      "Saksham played a crucial role in bringing IdeaTex to life with his technical expertise and innovative mindset. His dedication and problem-solving skills ensured a seamless platform that enhanced the event experience for participants. His contribution was invaluable, and we truly appreciate his efforts in making IdeaTex a success. Looking forward to more collaborations in the future!",
+    name: "Head of Tech - E-Cell KIET",
+    title: "Head of Tech - E-Cell KIET",
   },
 ];
 
@@ -180,8 +168,8 @@ export const workExperience = [
   },
   {
     id: 2,
-    title: "Web3 Developer Intern",
-    desc: "Designed and developed web app based on web3 using Rust as lanuage and Substrate as blockchain.",
+    title: "Backend Developer - MakeWithUs",
+    desc: "Serving as a Backend Developer at MakeWithUs, building scalable and efficient systems for innovative projects.",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp2.svg",
   },
