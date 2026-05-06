@@ -1,674 +1,149 @@
-<div align="center">
-  <br />
-    <a href="https://youtu.be/FTH6Dn3AyIQ" target="_blank">
-      <img src="https://github.com/adrianhajdin/portfolio/assets/151519281/c6ca3c03-6cb7-4f67-a9b9-a73da5bfa0d8" alt="Project Banner">
-    </a>
-  <br />
+# Saksham Jain — Portfolio Platform
 
-  <div>
-    <img src="https://img.shields.io/badge/-Next_JS-black?style=for-the-badge&logoColor=white&logo=nextdotjs&color=000000" alt="nextdotjs" />
-    <img src="https://img.shields.io/badge/-Framer-black?style=for-the-badge&logoColor=white&logo=framer&color=0055FF" alt="framer" />
-    <img src="https://img.shields.io/badge/-Three_JS-black?style=for-the-badge&logoColor=white&logo=threedotjs&color=000000" alt="three.js" />
-    <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="tailwindcss" />
-  </div>
+A senior-engineer portfolio + content platform at **[sakshamjain.codes](https://sakshamjain.codes)**.
+Eight live sub-products are showcased here:
 
-  <h3 align="center">A Modern Next.js Portfolio</h3>
+| Project | Live |
+| --- | --- |
+| AutoGrad | https://auto-grad.sakshamjain.codes |
+| Bodh | https://bodh.sakshamjain.codes |
+| Karunya Trust | https://chtrust.sakshamjain.codes |
+| Gallera | https://gallera.sakshamjain.codes |
+| KBG | https://kbg.sakshamjain.codes |
+| OSA | https://osa.sakshamjain.codes |
+| SYTA | https://syta.sakshamjain.codes |
+| Uddeshya | https://uddeshya.sakshamjain.codes |
 
-   <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
-    </div>
-</div>
+This is not a static portfolio — it's a CMS-backed platform with an admin
+panel, lead-management, MDX blog, and resume hosting.
 
-## 📋 <a name="table">Table of Contents</a>
+---
 
-1. 🤖 [Introduction](#introduction)
-2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Features](#features)
-4. 🤸 [Quick Start](#quick-start)
-5. 🕸️ [Code to Copy](#snippets)
-6. 🔗 [Assets](#links)
-7. 🚀 [More](#more)
+## Stack
 
-## 🚨 Tutorial
+- **Framework**: Next.js 14 App Router (React Server Components, server actions)
+- **Language**: TypeScript (strict)
+- **Styling**: Tailwind CSS, custom design tokens
+- **Animation**: Framer Motion, Three.js / react-three-fiber (3D globe), GSAP-style canvas effects
+- **Database**: MongoDB (Atlas) via Mongoose *(wired in Phase B)*
+- **Auth**: NextAuth — credentials + email magic link *(wired in Phase B)*
+- **Content**: MDX blog stored in MongoDB, rendered with `next-mdx-remote`
+- **Hosting**: Vercel (edge-ready)
 
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>. 
+---
 
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
-
-
-
-## <a name="introduction">🤖 Introduction</a>
-
-Built with Next.js for handling the user interface, Three.js for rendering 3D elements, Framer motion for beautiful animations, and styled with TailwindCSS, this portfolio demonstrates the developer's skills in a unique manner that creates a lasting impact.
-
-## <a name="tech-stack">⚙️ Tech Stack</a>
-
-- Next.js
-- Three.js
-- Framer Motion
-- Tailwind CSS
-
-## <a name="features">🔋 Features</a>
-
-👉 **Hero**: Captivating introduction featuring a spotlight effect and dynamic background.
-
-👉 **Bento Grid**: Modern layout presenting personal information using cutting-edge CSS design techniques.
-
-👉 **3D Elements**:  Interactive 3D design elements, such as a GitHub-style globe and card hover effects, adding depth and engagement.
-
-👉 **Testimonials**: Dynamic testimonials area with scrolling or animated content for enhanced engagement.
-
-👉 **Work Experience**: Prominent display of professional background for emphasis and credibility.
-
-👉 **Canvas Effect**: Innovative use of HTML5 canvas to create visually striking effects in the "approaches" section.
-
-👉 **Responsiveness**: Seamless adaptability across all devices, ensuring optimal viewing experience for every user.
-
-and many more, including code architecture and reusability 
-
-## <a name="quick-start">🤸 Quick Start</a>
-
-Follow these steps to set up the project locally on your machine.
-
-**Prerequisites**
-
-Make sure you have the following installed on your machine:
-
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)
-
-**Cloning the Repository**
+## Getting started
 
 ```bash
-git clone https://github.com/adrianhajdin/portfolio.git
-cd portfolio
-```
-
-**Installation**
-
-Install the project dependencies using npm:
-
-```bash
+# 1. Install
 npm install
-```
 
-**Running the Project**
+# 2. Configure
+cp .env.example .env.local
+# Then fill in MONGODB_URI, NEXTAUTH_SECRET, ADMIN_EMAIL, ADMIN_PASSWORD, etc.
 
-```bash
+# 3. Seed admin user (Phase B+)
+npm run seed:admin
+
+# 4. Dev server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
+Open [http://localhost:3000](http://localhost:3000).
 
-## <a name="snippets">🕸️ Snippets</a>
+---
 
-<details>
-<summary><code>data/index.ts</code></summary>
+## Environment variables
 
-```typescript
-export const navItems = [
-  { name: "About", link: "#about" },
-  { name: "Projects", link: "#projects" },
-  { name: "Testimonials", link: "#testimonials" },
-  { name: "Contact", link: "#contact" },
-];
+See [`.env.example`](./.env.example). All secrets live in `.env.local`
+(gitignored). Required for prod:
 
-export const gridItems = [
-  {
-    id: 1,
-    title: "I prioritize client collaboration, fostering open communication ",
-    description: "",
-    className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
-    imgClassName: "w-full h-full",
-    titleClassName: "justify-end",
-    img: "/b1.svg",
-    spareImg: "",
-  },
-  {
-    id: 2,
-    title: "I'm very flexible with time zone communications",
-    description: "",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
-    imgClassName: "",
-    titleClassName: "justify-start",
-    img: "",
-    spareImg: "",
-  },
-  {
-    id: 3,
-    title: "My tech stack",
-    description: "I constantly try to improve",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
-    imgClassName: "",
-    titleClassName: "justify-center",
-    img: "",
-    spareImg: "",
-  },
-  {
-    id: 4,
-    title: "Tech enthusiast with a passion for development.",
-    description: "",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
-    imgClassName: "",
-    titleClassName: "justify-start",
-    img: "/grid.svg",
-    spareImg: "/b4.svg",
-  },
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL — used by metadata, OG, sitemap |
+| `MONGODB_URI` | MongoDB Atlas connection string |
+| `NEXTAUTH_SECRET` | Generated via `openssl rand -base64 32` |
+| `NEXTAUTH_URL` | Same as `NEXT_PUBLIC_SITE_URL` in prod |
+| `ADMIN_EMAIL` | First admin user, seeded once |
+| `ADMIN_PASSWORD` | First admin password — hashed at seed time |
+| `EMAIL_SERVER` (optional) | SMTP URL for magic-link sign-in. If unset, magic-link disabled |
+| `EMAIL_FROM` (optional) | From address for magic-link emails |
 
-  {
-    id: 5,
-    title: "Currently building a JS Animation library",
-    description: "The Inside Scoop",
-    className: "md:col-span-3 md:row-span-2",
-    imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
-    titleClassName: "justify-center md:justify-start lg:justify-center",
-    img: "/b5.svg",
-    spareImg: "/grid.svg",
-  },
-  {
-    id: 6,
-    title: "Do you want to start a project together?",
-    description: "",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
-    imgClassName: "",
-    titleClassName: "justify-center md:max-w-full max-w-60 text-center",
-    img: "",
-    spareImg: "",
-  },
-];
+---
 
-export const projects = [
-  {
-    id: 1,
-    title: "3D Solar System Planets to Explore",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "https://github.com/adrianhajdin?tab=repositories",
-  },
-  {
-    id: 2,
-    title: "Yoom - Video Conferencing App",
-    des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "https://github.com/adrianhajdin/zoom-clone",
-  },
-  {
-    id: 3,
-    title: "AI Image SaaS - Canva Application",
-    des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-    img: "/p3.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "https://github.com/adrianhajdin/ai_saas_app",
-  },
-  {
-    id: 4,
-    title: "Animated Apple Iphone 3D Website",
-    des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-    img: "/p4.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
-    link: "https://github.com/adrianhajdin/iphone",
-  },
-];
+## Project structure
 
-export const testimonials = [
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-  {
-    quote:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
-    name: "Michael Johnson",
-    title: "Director of AlphaStream Technologies",
-  },
-];
+```
+app/
+  page.tsx              Public homepage
+  layout.tsx            Root layout, fonts, metadata
+  globals.css           Tailwind base + tokens
+  provider.tsx          ThemeProvider (next-themes)
+  api/                  Auth + contact + admin REST endpoints (Phase B+)
+  admin/                Auth-gated CMS (Phase D)
+  blog/[slug]/          MDX-rendered blog posts (Phase F)
+  projects/[slug]/      Project detail pages (Phase E)
+  architecture/         Architecture-showcase page (Phase E)
+  resume/               Resume page + PDF download (Phase G)
 
-export const companies = [
-  {
-    id: 1,
-    name: "cloudinary",
-    img: "/cloud.svg",
-    nameImg: "/cloudName.svg",
-  },
-  {
-    id: 2,
-    name: "appwrite",
-    img: "/app.svg",
-    nameImg: "/appName.svg",
-  },
-  {
-    id: 3,
-    name: "HOSTINGER",
-    img: "/host.svg",
-    nameImg: "/hostName.svg",
-  },
-  {
-    id: 4,
-    name: "stream",
-    img: "/s.svg",
-    nameImg: "/streamName.svg",
-  },
-  {
-    id: 5,
-    name: "docker.",
-    img: "/dock.svg",
-    nameImg: "/dockerName.svg",
-  },
-];
+components/
+  Hero.tsx              Spotlight + headline + CTA
+  Grid.tsx              BentoGrid composition
+  RecentProjects.tsx    Pin animation grid of projects
+  Clients.tsx           Testimonial marquee + tech-stack strip
+  Experience.tsx        Moving-borders cards
+  Approach.tsx          Three-phase engineering process (PRD/HLD/LLD → Implementation → Scale)
+  Footer.tsx            CTA + social
+  signup.tsx            Contact form
+  ui/                   Spotlight, BentoGrid, Pin, Globe, MovingBorders, InfiniteCards, etc.
 
-export const workExperience = [
-  {
-    id: 1,
-    title: "Frontend Engineer Intern",
-    desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
-    className: "md:col-span-2",
-    thumbnail: "/exp1.svg",
-  },
-  {
-    id: 2,
-    title: "Mobile App Dev - JSM Tech",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-    className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp2.svg",
-  },
-  {
-    id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
-    className: "md:col-span-2", // change to md:col-span-2
-    thumbnail: "/exp3.svg",
-  },
-  {
-    id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
-    className: "md:col-span-2",
-    thumbnail: "/exp4.svg",
-  },
-];
+data/
+  index.ts              Static content (projects, experience, testimonials, profile)
+                        — falls back here when DB is unavailable.
 
-export const socialMedia = [
-  {
-    id: 1,
-    img: "/git.svg",
-  },
-  {
-    id: 2,
-    img: "/twit.svg",
-  },
-  {
-    id: 3,
-    img: "/link.svg",
-  },
-];
+lib/
+  utils.ts              cn() helper
+  // Phase B+:
+  db/                   Mongoose connection
+  models/               User, Project, Experience, Lead, BlogPost, Resume schemas
+  auth/                 NextAuth options + session helpers
+  validations/          Zod schemas for contact, projects, blog, etc.
+  mdx/                  MDX components + render pipeline
+  seed/                 Admin / projects / experience seed scripts
 ```
 
-</details>
+---
 
-<details>
-<summary><code>tailwind.config.ts</code></summary>
+## Roadmap
 
-```ts
-import type { Config } from "tailwindcss";
+Phased rebuild from the original tutorial scaffold:
 
-const svgToDataUri = require("mini-svg-data-uri");
+- ✅ **Phase 0** — Security cleanup (malware removed from `postcss.config.js`, Sentry stripped, env scaffolded)
+- ✅ **Phase A** — Content swap: real projects, experience, testimonials, copy. Design system preserved.
+- 🚧 **Phase B** — Backend foundation (DB, models, NextAuth, seed admin, middleware)
+- 🚧 **Phase C** — Contact form persistence + lead capture
+- 🚧 **Phase D** — Admin panel (projects, blog, experience, leads, resume CRUD)
+- 🚧 **Phase E** — Project detail pages, architecture-showcase page
+- 🚧 **Phase F** — MDX blog + RSS + search
+- 🚧 **Phase G** — Resume PDF upload + download endpoint
+- 🚧 **Phase H** — SEO finishing (sitemap, robots, OG image)
 
-const colors = require("tailwindcss/colors");
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
+---
 
-const config = {
-  darkMode: ["class"],
-  content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-    "./data/**/*.{ts,tsx}",
-  ],
-  prefix: "",
-  theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
-    extend: {
-      colors: {
-        black: {
-          DEFAULT: "#000",
-          100: "#000319",
-          200: "rgba(17, 25, 40, 0.75)",
-          300: "rgba(255, 255, 255, 0.125)",
-        },
-        white: {
-          DEFAULT: "#FFF",
-          100: "#BEC1DD",
-          200: "#C1C2D3",
-        },
-        blue: {
-          "100": "#E4ECFF",
-        },
-        purple: "#CBACF9",
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        spotlight: {
-          "0%": {
-            opacity: "0",
-            transform: "translate(-72%, -62%) scale(0.5)",
-          },
-          "100%": {
-            opacity: "1",
-            transform: "translate(-50%,-40%) scale(1)",
-          },
-        },
-        shimmer: {
-          from: {
-            backgroundPosition: "0 0",
-          },
-          to: {
-            backgroundPosition: "-200% 0",
-          },
-        },
-        moveHorizontal: {
-          "0%": {
-            transform: "translateX(-50%) translateY(-10%)",
-          },
-          "50%": {
-            transform: "translateX(50%) translateY(10%)",
-          },
-          "100%": {
-            transform: "translateX(-50%) translateY(-10%)",
-          },
-        },
-        moveInCircle: {
-          "0%": {
-            transform: "rotate(0deg)",
-          },
-          "50%": {
-            transform: "rotate(180deg)",
-          },
-          "100%": {
-            transform: "rotate(360deg)",
-          },
-        },
-        moveVertical: {
-          "0%": {
-            transform: "translateY(-50%)",
-          },
-          "50%": {
-            transform: "translateY(50%)",
-          },
-          "100%": {
-            transform: "translateY(-50%)",
-          },
-        },
-        scroll: {
-          to: {
-            transform: "translate(calc(-50% - 0.5rem))",
-          },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        spotlight: "spotlight 2s ease .75s 1 forwards",
-        shimmer: "shimmer 2s linear infinite",
-        first: "moveVertical 30s ease infinite",
-        second: "moveInCircle 20s reverse infinite",
-        third: "moveInCircle 40s linear infinite",
-        fourth: "moveHorizontal 40s ease infinite",
-        fifth: "moveInCircle 20s ease infinite",
-        scroll:
-          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
-      },
-    },
-  },
-  plugins: [
-    require("tailwindcss-animate"),
-    addVariablesForColors,
-    function ({ matchUtilities, theme }: any) {
-      matchUtilities(
-        {
-          "bg-grid": (value: any) => ({
-            backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="100" height="100" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`
-            )}")`,
-          }),
-          "bg-grid-small": (value: any) => ({
-            backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="8" height="8" fill="none" stroke="${value}"><path d="M0 .5H31.5V32"/></svg>`
-            )}")`,
-          }),
-          "bg-dot": (value: any) => ({
-            backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="1.6257413380501518"></circle></svg>`
-            )}")`,
-          }),
-        },
-        { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
-      );
-    },
-  ],
-} satisfies Config;
+## Security note
 
-function addVariablesForColors({ addBase, theme }: any) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-  );
+This repository previously contained an obfuscated payload in
+`postcss.config.js` (commit `135d7d2`). It was removed in commit `203c20a`.
+If you fork or clone, run:
 
-  addBase({
-    ":root": newVars,
-  });
-}
-
-export default config;
+```bash
+git log --all -S 'String.fromCharCode(127)' -- '*.js' '*.ts'
 ```
 
-</details>
+to confirm your tree is clean before installing.
 
-<details>
-<summary><code>globals.css</code></summary>
+---
 
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+## License
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 10% 3.9%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border !scroll-smooth;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  button {
-    @apply active:outline-none;
-  }
-}
-
-@layer utilities {
-  .heading {
-    @apply font-bold text-4xl md:text-5xl text-center;
-  }
-
-  .black-gradient {
-    background: linear-gradient(90deg, #161a31 0%, #06091f 100%);
-  }
-}
-```
-
-</details>
-
-
-<details>
-<summary><code>Linear Gradient</code></summary>
-
-```js
-style={{
-        //   add these two
-        //   you can generate the color from here https://cssgradient.io/
-        background: "rgb(4,7,29)",
-        backgroundColor:
-          "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-      }}
-```
-</details>
-
-
-## <a name="links">🔗 Assets</a>
-
-Assets used in the project can be found [here](https://drive.google.com/file/d/1ZmtiMilUYTp1wkiXWMFX6AUk-msE981-/view?usp=sharing)
-
-## <a name="more">🚀 More</a>
-
-**Advance your skills with Next.js 14 Pro Course**
-
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with detailed explanations, cool features, and exercises to boost your skills. Give it a go!
-
-<br />
-<br />
-
-**Accelerate your professional journey with the Expert Training program**
-
-And if you're hungry for more than just a course and want to understand how we learn and tackle tech challenges, hop into our personalized masterclass. We cover best practices, different web skills, and offer mentorship to boost your confidence. Let's learn and grow together!
-
-
-#
+UNLICENSED — © Saksham Jain. All rights reserved.

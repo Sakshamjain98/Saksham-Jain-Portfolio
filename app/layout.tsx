@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
@@ -6,9 +6,58 @@ import { ThemeProvider } from "./provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sakshamjain.codes";
+
 export const metadata: Metadata = {
-  title: "Saksham's Portfolio",
-  description: "Modern Saksham DevRel Portfolio",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Saksham Jain — Full-Stack Engineer & Systems Architect",
+    template: "%s · Saksham Jain",
+  },
+  description:
+    "Saksham Jain — senior-track full-stack engineer and systems architect. PRD-to-production ownership, backend depth, AI infrastructure, and CMS platforms. Eight live sub-products on sakshamjain.codes.",
+  keywords: [
+    "Saksham Jain",
+    "Full-Stack Engineer",
+    "Systems Architect",
+    "Backend Engineer",
+    "Next.js",
+    "TypeScript",
+    "MongoDB",
+    "Product Engineer",
+    "AI Infrastructure",
+    "India",
+  ],
+  authors: [{ name: "Saksham Jain", url: siteUrl }],
+  creator: "Saksham Jain",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    title: "Saksham Jain — Full-Stack Engineer & Systems Architect",
+    description:
+      "Senior-track engineer building production systems with architecture-first thinking. Eight live sub-products. Available for senior IC and founding-engineer roles.",
+    siteName: "Saksham Jain",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Saksham Jain — Full-Stack Engineer & Systems Architect",
+    description:
+      "Senior-track engineer building production systems. PRD → HLD → ship → operate.",
+    creator: "@Saksham_Jain007",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#000319" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+  ],
 };
 
 export default function RootLayout({
@@ -19,11 +68,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link
-          rel="icon"
-          href="https://res.cloudinary.com/djc8hwlgb/image/upload/v1715792028/nav-avatar_ixdk9v.png"
-          sizes="any"
-        />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
       <body className={inter.className}>
         <ThemeProvider

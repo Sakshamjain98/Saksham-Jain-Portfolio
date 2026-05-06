@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444"/>
+      <stop offset="100%" stop-color="#7F1D1D"/>
+    </linearGradient>
+    <radialGradient id="r" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <pattern id="dots" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="rgba(255,255,255,0.08)"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <rect width="800" height="500" fill="url(#dots)"/>
+  <rect width="800" height="500" fill="url(#r)"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" fill="#FFFFFF">
+    <text x="60" y="270" font-size="64" font-weight="800" letter-spacing="-1.5">Uddeshya</text>
+    <text x="62" y="320" font-size="22" font-weight="500" fill="rgba(255,255,255,0.78)">Mission-driven engineering for an NGO</text>
+    <text x="62" y="450" font-size="14" font-weight="500" fill="rgba(255,255,255,0.55)" letter-spacing="2">SAKSHAMJAIN.CODES</text>
+  </g>
+</svg>
