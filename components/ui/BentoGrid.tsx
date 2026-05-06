@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./GradientBg";
 import GridGlobe from "./GridGlobe";
 import animationData from "@/data/confetti.json";
+import { profile, stackTiles } from "@/data";
 import MagicButton from "../MagicButton";
 
 export const BentoGrid = ({
@@ -51,8 +52,8 @@ export const BentoGridItem = ({
   titleClassName?: string;
   spareImg?: string;
 }) => {
-  const leftLists = ["ReactJS", "Express", "Typescript"];
-  const rightLists = ["NextJS", "EJS", "GraphQL"];
+  const leftLists = stackTiles.left;
+  const rightLists = stackTiles.right;
 
   const [copied, setCopied] = useState(false);
 
@@ -66,8 +67,7 @@ export const BentoGridItem = ({
   };
 
   const handleCopy = () => {
-    const text = "sakshambro730@gmail.com";
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(profile.publicEmail);
     setCopied(true);
   };
 
