@@ -10,12 +10,14 @@
 // ──────────────────────────────────────────────────────────────────────────────
 
 export const navItems = [
-  { name: "About", link: "#about" },
-  { name: "Projects", link: "#project" },
-  { name: "Architecture", link: "#approach" },
-  { name: "Experience", link: "#experience" },
+  { name: "Home", link: "/#top" },
+  { name: "About", link: "/#about" },
+  { name: "Projects", link: "/projects" },
+  { name: "Architecture", link: "/architecture" },
+  { name: "Experience", link: "/#experience" },
   { name: "Blog", link: "/blog" },
-  { name: "Contact", link: "#contact" },
+  { name: "Resume", link: "/resume" },
+  { name: "Contact", link: "/#contact" },
 ];
 
 export const gridItems = [

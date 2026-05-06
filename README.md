@@ -40,16 +40,31 @@ npm install
 
 # 2. Configure
 cp .env.example .env.local
-# Then fill in MONGODB_URI, NEXTAUTH_SECRET, ADMIN_EMAIL, ADMIN_PASSWORD, etc.
+# Edit .env.local — fill in:
+#   MONGODB_URI      = mongodb+srv://...
+#   NEXTAUTH_SECRET  = $(openssl rand -base64 32)
+#   NEXTAUTH_URL     = http://localhost:3000   # or your prod URL
+#   ADMIN_EMAIL      = your-admin@email
+#   ADMIN_PASSWORD   = a strong password (min 12 chars recommended)
+#   ADMIN_NAME       = "Saksham Jain"
+# Optional (magic-link sign-in):
+#   EMAIL_SERVER     = smtp://user:pass@host:587
+#   EMAIL_FROM       = "Saksham Jain <noreply@your-domain>"
 
-# 3. Seed admin user (Phase B+)
-npm run seed:admin
+# 3. Seed admin user
+npm run seed:admin                       # creates user from .env
+npm run seed:admin -- --force            # rotate the password hash
 
-# 4. Dev server
+# 4. (optional) Seed projects + experience from data/index.ts into MongoDB
+npm run seed:projects
+npm run seed:experience
+
+# 5. Dev server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) for the public site,
+[http://localhost:3000/admin/login](http://localhost:3000/admin/login) for the CMS.
 
 ---
 
@@ -120,13 +135,37 @@ Phased rebuild from the original tutorial scaffold:
 
 - ✅ **Phase 0** — Security cleanup (malware removed from `postcss.config.js`, Sentry stripped, env scaffolded)
 - ✅ **Phase A** — Content swap: real projects, experience, testimonials, copy. Design system preserved.
-- 🚧 **Phase B** — Backend foundation (DB, models, NextAuth, seed admin, middleware)
-- 🚧 **Phase C** — Contact form persistence + lead capture
-- 🚧 **Phase D** — Admin panel (projects, blog, experience, leads, resume CRUD)
-- 🚧 **Phase E** — Project detail pages, architecture-showcase page
-- 🚧 **Phase F** — MDX blog + RSS + search
-- 🚧 **Phase G** — Resume PDF upload + download endpoint
-- 🚧 **Phase H** — SEO finishing (sitemap, robots, OG image)
+- ✅ **Phase B** — Backend foundation: Mongoose connection, six models (User, Project, Experience, Lead, BlogPost, Resume), NextAuth (credentials + magic link), middleware, seed admin
+- ✅ **Phase C** — Contact form persistence: zod-validated `/api/contact`, honeypot + per-IP rate limit, leads collection
+- ✅ **Phase D** — Admin panel: login form, dashboard, CRUD for projects / blog / experience / leads / resume
+- ✅ **Phase E** — `/projects` index + `/projects/[slug]` detail with sectioned architecture write-ups; `/architecture` showcase
+- ✅ **Phase F** — MDX blog at `/blog` and `/blog/[slug]` with shiki-powered syntax highlighting, tags, related posts, RSS feed at `/blog/feed.xml`
+- ✅ **Phase G** — Resume page at `/resume`, public PDF endpoint at `/api/resume`, admin upload + version history at `/admin/resume`
+- ✅ **Phase H** — SEO: dynamic `app/sitemap.ts`, `app/robots.ts`, edge-rendered `opengraph-image.tsx`, per-page `generateMetadata`, custom `not-found.tsx`
+
+## Routes
+
+### Public
+- `/` — homepage (hero, bento grid, projects, testimonials, experience, approach, contact form, footer)
+- `/projects` — full project index with status pills
+- `/projects/[slug]` — project detail with architecture sections + sticky aside
+- `/architecture` — architecture-showcase page (PRD/HLD/LLD pillars, principles)
+- `/blog` — blog index with tag list
+- `/blog/[slug]` — MDX-rendered post with related links
+- `/blog/feed.xml` — RSS feed
+- `/resume` — resume preview + download + experience timeline
+- `/sitemap.xml` and `/robots.txt` — auto-generated
+- `/api/contact` — POST: contact form lead capture
+- `/api/resume` — GET: download active PDF (`?download=1` to force attachment)
+
+### Admin (auth-gated, role: `admin` or `editor`)
+- `/admin/login` — credentials + magic-link sign-in
+- `/admin` — dashboard with counts and recent leads
+- `/admin/projects` — list / new / edit
+- `/admin/blog` — list / new / edit (MDX editor)
+- `/admin/experience` — list / new / edit
+- `/admin/leads` — inbox, status filters, detail with notes + status workflow
+- `/admin/resume` — upload PDFs, version history, set-active
 
 ---
 
