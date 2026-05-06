@@ -76,6 +76,16 @@
   button {
     @apply active:outline-none;
   }
+
+  /*
+   * The FloatingNav is fixed at top-10 (2.5rem) and ~5rem tall, so it covers
+   * the top of any anchored section after a /#hash navigation. Push every
+   * anchored target down so it lands BELOW the floating nav instead of under it.
+   */
+  :target,
+  [id]:not(html):not(body) {
+    scroll-margin-top: 7rem;
+  }
 }
 
 @layer utilities {

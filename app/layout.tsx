@@ -1,10 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 
 import "./globals.css";
 import { ThemeProvider } from "./provider";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = localFont({
+  src: [
+    {
+      path: "../public/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf",
+      weight: "100 1000",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/DM_Sans/DMSans-Italic-VariableFont_opsz,wght.ttf",
+      weight: "100 1000",
+      style: "italic",
+    },
+  ],
+  display: "swap",
+  variable: "--font-dm-sans",
+  preload: true,
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://sakshamjain.codes";
 
@@ -66,11 +82,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={dmSans.variable}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </head>
-      <body className={inter.className}>
+      <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
